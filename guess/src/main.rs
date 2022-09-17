@@ -1,16 +1,25 @@
-//use std::io::{self, Read};//prelude
+use std::vec::Vec;
 
-fn main() {
-    println!("Start guesssing!");
-    // let foo = 9;
-    // let bar = foo;// immutable variables 
-    let mut guess = String::new(); // variables mutable
-    // fixed 
-    std::io::stdin().read_line(&mut guess).expect("Cannot read the line");
-    //read_line返回的是一个io::Result类型的变量，取值包括Ok和Err
-    //如果Expect接收到的是Err则expect方法会中断当前程序并显示字符串信息
-    //如果接收到的是Ok，则将Ok中附加的值返回给用户。
-    //ensure the usage of buffer to be safe. 
-    println!("You guessed {}",guess);
+fn main(){
+    let mut vec = Vec::new();
+    println!("the result is {}",sum(map(vec)));
+}
 
+fn sum(vec:Vec<i32>) -> i32{
+    let mut total = 0;
+    for n in vec.iter(){
+        //println!("Prime {}: {}", ix, n);
+        total += n;
+    }
+    return total;
+}
+
+fn map(mut vec:Vec<i32>) -> Vec<i32>{
+    let mut vec1 = Vec::new();
+    
+    for n in vec.iter() {
+        //println!("Prime {}: {}", ix, n);
+        vec1.push(n * n + 2);
+    }
+    return vec1;
 }
